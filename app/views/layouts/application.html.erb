@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Depot</title>
+    <title>Pragprog Books Online Store</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 <body>
-  <%= content_tag :body, class: controller.controller_name do %>
+<%# This adds a banner consisting of an image and some text to the top %>
+<header class="main">
+<section class="content">
+  <nav class="side_nav">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/questions">Questions</a></li>
+      <li><a href="/news">News</a></li>
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+  <%= image_tag 'logo.png', alt: 'The Pragmatic Bookshelf' %>
+
+  <%# Getting the current date and time %>
+  <p> current date and time: <%= Time.now.strftime("%m:%d:%Y") %> </p>
+
+  <h1><%= @page_title %></h1>
+</header>
+ <body>
+  <%= content_tag :main, class: controller.controller_name do %>
     <%= yield %>
   <% end %>
+
+</body>
+</section>
   </body>
 </html>
