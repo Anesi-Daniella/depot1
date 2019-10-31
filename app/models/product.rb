@@ -1,2 +1,14 @@
 class Product < ApplicationRecord
+    # This ensures that if 
+    before_destroy :ensure_not_referenced_by_any_line_item
+    private
+# ensure that there are no line items referencing this product
+def ensure_not_referenced_by_any_line_item
+  unless line_items.empty?
+    errors.add(:base, 'Line Items present')
+    throw :abort
+  end
+end
+    # This will allow us to access all the line items that reference a product as product.line_items
+    has_many :line_items
 end
