@@ -1,17 +1,11 @@
-<p id="notice"><%= notice %></p>
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
 
 <h1>Products</h1>
 
 <table>
-  <%# # <thead>
-  #   <tr>
-  #     <th>Title</th>
-  #     <th>Description</th>
-  #     <th>Image url</th>
-  #     <th>Price</th>
-  #     <th colspan="3"></th>
-  #   </tr>
-  # </thead> %>
+
   <tbody>
     <% @products.each do |product| %>
       <%= content_tag :tr, class: cycle('list_line_odd', 'list_line_even') do %>

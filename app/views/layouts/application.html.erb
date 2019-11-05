@@ -10,7 +10,11 @@
 <body>
 <%# This adds a banner consisting of an image and some text to the top %>
 <header class="main">
-<section class="content">
+ <%= image_tag 'logo.png', alt: 'The Pragmatic Bookshelf' %>
+  <h1><%= @page_title %></h1>
+  </header>
+ <section class="content">
+  <%# side navigation at the top of the webpage that includes 4 blank links to other pages %>
   <nav class="side_nav">
     <ul>
       <li><a href="/">Home</a></li>
@@ -19,19 +23,14 @@
       <li><a href="/contact">Contact</a></li>
     </ul>
   </nav>
-  <%= image_tag 'logo.png', alt: 'The Pragmatic Bookshelf' %>
 
   <%# Getting the current date and time %>
   <p> current date and time: <%= Time.now.strftime("%m:%d:%Y") %> </p>
 
-  <h1><%= @page_title %></h1>
-</header>
- <body>
   <%= content_tag :main, class: controller.controller_name do %>
     <%= yield %>
   <% end %>
 
-</body>
 </section>
   </body>
 </html>
