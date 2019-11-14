@@ -5,13 +5,9 @@ one:
   description: MyText
   image_url: ruby.jpg
   price: 9.99
-  # this ensures the presence of data in the following fields 
   validates :title, :description, :image_url, presence: true
-  # Ensures that no two items have the same title
   validates :title, uniqueness: true
-  # Ensures a product has a price greater than 0.00
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
-  # Using regular expression specifies that the url for the product image ends in one of the three extensions
   validates :image_url, allow_blank: true, format: {
   with: %r{\.(gif|jpg|png)\Z}i,
   message: 'must be a URL for GIF, JPG or PNG image.'
@@ -23,14 +19,10 @@ two:
   description: MyText
   image_url: ruby.jpg
   price: 9.99
-  # this ensures the presence of data in the following fields 
   validates :title, :description, :image_url, presence: true
-  # Ensures that no two items have the same title
   validates :title, uniqueness: true
-  # Ensures a product has a price greater than 0.00
   validates :price, numericality: { greater_than_or_equal_to: 0.01 }
   validates :image_url, allow_blank: true, format: {
-  # Using regular expression specifies that the url for the product image ends in one of the three extensions
   with: %r{\.(gif|jpg|png)\Z}i,
   message: 'must be a URL for GIF, JPG or PNG image.'
 }
