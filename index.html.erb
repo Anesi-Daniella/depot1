@@ -6,7 +6,7 @@
 <h1>Your Pragmatic Catalog</h1>
 
 <ul class="catalog">
-<%# sets a loop over the list products and displays each product in turn %>
+  <%# sets a loop over the list products and displays each product in turn %>
   <% @products.each do |product| %>
     <li>
       <%= image_tag(product.image_url) %>
