@@ -5,27 +5,14 @@ one:
   description: MyText
   image_url: ruby.jpg
   price: 9.99
-  validates :title, :description, :image_url, presence: true
-  validates :title, uniqueness: true
-  validates :price, numericality: { greater_than_or_equal_to: 0.01 }
-  validates :image_url, allow_blank: true, format: {
-  with: %r{\.(gif|jpg|png)\Z}i,
-  message: 'must be a URL for GIF, JPG or PNG image.'
-}
-
+ 
 
 two:
   title: MyString
   description: MyText
   image_url: ruby.jpg
   price: 9.99
-  validates :title, :description, :image_url, presence: true
-  validates :title, uniqueness: true
-  validates :price, numericality: { greater_than_or_equal_to: 0.01 }
-  validates :image_url, allow_blank: true, format: {
-  with: %r{\.(gif|jpg|png)\Z}i,
-  message: 'must be a URL for GIF, JPG or PNG image.'
-}
+
 ruby:
   title: Programming Ruby 1.9 & 2.0
   description:
@@ -34,4 +21,4 @@ ruby:
     you should add Ruby to your toolbox.
   image_url: ruby.jpg
   price: 49.95
-}
+
