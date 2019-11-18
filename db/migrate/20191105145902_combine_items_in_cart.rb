@@ -16,4 +16,20 @@ class CombineItemsInCart < ActiveRecord::Migration[5.1]
       end
     end
   end
+  # down method part of the up, down pair used to undo/reverse migrations
+  def down
+    # split items with quantity>1 into multiple items
+    LineItem.where("quantity>1").each do |item|
+
+    # add individual items
+    item.quantity.times do
+      LineItem.create(cart_id: item.cart_id,
+        product_id: item.product_id, quantity: 1)
+    end
+  # remove original item
+  item.destroy
+  end
 end
+end
+      
+
