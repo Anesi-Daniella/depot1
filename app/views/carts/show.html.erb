@@ -1,12 +1,9 @@
 <% if notice %>
-  <aside id="notice"><%= notice %></aside>
+  <p id="notice"><%= notice %></p>
 <% end %>
 
-<h2>Your Pragmatic Cart</h2>
-<ul>
-<%# error message- undefined method line_items %>
-  <% @cart.line_items.each do |item| %>
-    <li><%= item.product.title %></li> <%= item.quantity %> &times;
-  <% end %>
-</ul>
+<%= render @cart %>
+
+<%= button_to 'Add to Cart', line_items_path(product_id: product),
+  remote: true %>
 
