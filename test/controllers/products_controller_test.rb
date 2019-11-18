@@ -3,6 +3,7 @@ require 'test_helper'
 class ProductsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @product = products(:one)
+    #@product = products(:two)
   end
 
   test "should get index" do
@@ -14,10 +15,9 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     get new_product_url
     assert_response :success
   end
-  #tries to enter an exact copy of @product
+
   test "should create product" do
     assert_difference('Product.count') do
-      # post command
       post products_url, params: { product: { description: @product.description, image_url: @product.image_url, price: @product.price, title: "New Book" } }
     end
 
@@ -43,15 +43,18 @@ class ProductsControllerTest < ActionDispatch::IntegrationTest
     assert_difference('Product.count', -1) do
       delete product_url(@product)
     end
-    # enures that a product in a cart cannot be deleted
-    test "can't delete product in cart" do
-      assert_difference('Product.count', 0) do
-        delete product_url(products(:two))
-      end
-    
-      assert_redirected_to products_url
-    end
 
     assert_redirected_to products_url
   end
+
+  test "can't delete product in cart" do
+    assert_difference('Product.count', 0) do
+      #delete product_url(@product)
+    delete product_url(products(:two))
+    #delete product_url(products(:one))
+    end
+
+    assert_redirected_to products_url(@product)
+  end
+
 end

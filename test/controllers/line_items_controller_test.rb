@@ -34,15 +34,25 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update line_item" do
-    patch line_item_url(@line_item), params: { line_item: { cart_id: @line_item.cart_id, product_id: @line_item.product_id } }
-    assert_redirected_to line_item_url(@line_item)
+    patch line_item_url(@line_item), params: { 
+      line_item: { product_id: @line_item.product_id } 
+    }
+    # assert_redirected_to line_item_url(@line_item)
+    assert_redirected_to cart_path(@line_item.cart)
   end
 
   test "should destroy line_item" do
     assert_difference('LineItem.count', -1) do
       delete line_item_url(@line_item)
     end
-
-    assert_redirected_to line_items_url
   end
-end
+
+  test "should create line item via ajax" do
+    assert_difference('LineItem.count', -1) do
+      post line_items_url, params: { product_id: products(:one).id },
+           xhr: true
+    end
+    assert_response :success
+  end
+
+end ##class
