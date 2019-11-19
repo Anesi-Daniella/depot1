@@ -1,17 +1,16 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyText
+  title: ProductOne
+  description: MyTextOne
   image_url: ruby.jpg
   price: 9.99
- 
 
 two:
-  title: MyString
-  description: MyText
+  title: ProductTwo
+  description: MyTextTwo
   image_url: ruby.jpg
-  price: 9.99
+  price: 10.00
 
 ruby:
   title: Programming Ruby 1.9 & 2.0
@@ -21,4 +20,3 @@ ruby:
     you should add Ruby to your toolbox.
   image_url: ruby.jpg
   price: 49.95
-

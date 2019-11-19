@@ -16,11 +16,11 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create line_item" do
-    assert_difference('LineItem.count') do
-      post :create, product_id: products('1 x Programming Ruby 1.9 & 2.0')
+      assert_difference('LineItem.count') do
+      post :create, product_id: products(:"1 × Programming Ruby 1.9 & 2.0")
     end
 
-    assert_redirected_to cart_path(assigns(:line_item).cart)
+    assert_redirected_to line_item_url(LineItem.last)
   end
 
   test "should show line_item" do
@@ -34,25 +34,15 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update line_item" do
-    patch line_item_url(@line_item), params: { 
-      line_item: { product_id: @line_item.product_id } 
-    }
-    # assert_redirected_to line_item_url(@line_item)
-    assert_redirected_to cart_path(@line_item.cart)
+    patch line_item_url(@line_item), params: {line_item: { product_id: @line_item.product_id }}
+    assert_redirected_to line_item_url(@line_item)
   end
 
   test "should destroy line_item" do
     assert_difference('LineItem.count', -1) do
       delete line_item_url(@line_item)
     end
-  end
 
-  test "should create line item via ajax" do
-    assert_difference('LineItem.count', -1) do
-      post line_items_url, params: { product_id: products(:one).id },
-      xhr: true
-    end
-    assert_response :success
+    assert_redirected_to cart_path(assigns(:line_item).cart)
   end
-
-end ##class
+end
