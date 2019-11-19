@@ -3,5 +3,6 @@ module ApplicationHelper
     if condition
         render object
     end
+    end
 end
-end
+

@@ -3,38 +3,35 @@
   <head>
     <title>Pragprog Books Online Store</title>
     <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-<body>
-<header class="main">
- <%= image_tag 'logo.png', alt: 'The Pragmatic Bookshelf' %>
+  <body>
+    <header class="main">
+  <%= image_tag 'logo.png', alt: 'The Pragmatic Bookshelf' %>
   <h1><%= @page_title %></h1>
   </header>
   <section class="content">
-   <nav class="side_nav">
-     <% if @cart %>
+  <nav class="side_nav">
+    <% if @cart %>
       <div id="cart" class="carts">
-        <%= render_if @cart && @cart.line_items.any?, @cart %>
+        <%= render @cart %>
       </div>
     <% end %>
-
     <ul>
       <li><a href="/">Home</a></li>
       <li><a href="/questions">Questions</a></li>
       <li><a href="/news">News</a></li>
       <li><a href="/contact">Contact</a></li>
     </ul>
+    <p><%= l Time.now %></p>
   </nav>
-
-  <%# Getting the current date and time %>
-  <p> current date and time: <%= Time.now.strftime("%m:%d:%Y") %> </p>
-
-  <%= content_tag :main, class: controller.controller_name do %>
-    <%= yield %>
-  <% end %>
-</section>
+    <%= content_tag :main, class: controller.controller_name do %>
+      <%= yield %>
+    <% end %>
+    </section>
   </body>
 </html>
