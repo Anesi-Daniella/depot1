@@ -1,19 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  address: MyString
-  text: MyString
-  email: MyString
-  string: MyString
-  pay_type: MyString
-  integer: MyString
+  name: Dave Thomas 
+  address: MyText
+  email: dave@example.org
+  pay_type: Cheque
 
 two:
   name: MyString
-  address: MyString
-  text: MyString
+  address: MyText
   email: MyString
-  string: MyString
-  pay_type: MyString
-  integer: MyString
+  pay_type: 1
