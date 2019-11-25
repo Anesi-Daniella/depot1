@@ -1,5 +1,6 @@
 class StoreController < ApplicationController
-  skip_before_action :authorize
+  # the line below gives me an error for some unknown reason 
+  # skip_before_action :authorize
   include CurrentCart
   before_action :set_cart
   
